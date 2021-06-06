@@ -52,6 +52,7 @@ const showList = function () {
     console.log(`Sản phẩm: `, item.name);
     console.log(`Số lượng: `, item.amount);
     console.log(`Đơn giá: `, item.price);
+    console.log(`Tổng giá trị: ${item.price*item.amount} $ `)
     console.log(`Mô tả: `, item.description);
     console.log("---------------------------");
   });
@@ -65,6 +66,7 @@ const detailProduct = function (id) {
   console.log(`Sản phẩm: `, product.name);
   console.log(`Số lượng: `, product.amount);
   console.log(`Đơn giá : ${product.price} $`);
+  console.log(`Tổng giá trị: ${product.price*product.amount} $ `);
   console.log(`Mô tả: `, product.description);
   console.log("---------------------------");
 };
