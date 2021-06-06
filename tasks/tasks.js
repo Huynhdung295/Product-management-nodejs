@@ -2,7 +2,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 
 // Add product
-const addProduct = function (id, name, amount) {
+const addProduct = function (id, name, amount, price, description) {
   const listProduct = getListProduct();
 
   const founderId = listProduct.find((item) => {
@@ -10,9 +10,6 @@ const addProduct = function (id, name, amount) {
   });
   const founderItem = listProduct.find((item) => {
     return item.name === name;
-  });
-  const amountItem = listProduct.find((item) => {
-    return item.amount === amount;
   });
   if (founderItem)
     return console.log(
@@ -27,7 +24,7 @@ const addProduct = function (id, name, amount) {
       )}`
     );
 
-  const product = { id, name, amount };
+  const product = { id, name, amount, price, description };
   listProduct.push(product);
   updateList(listProduct);
   console.log(chalk.green("Thêm thành công!"));
@@ -54,6 +51,8 @@ const showList = function () {
     console.log(chalk.yellow(`ID: `, item.id));
     console.log(`Sản phẩm: `, item.name);
     console.log(`Số lượng: `, item.amount);
+    console.log(`Đơn giá: `, item.price);
+    console.log(`Mô tả: `, item.description);
     console.log("---------------------------");
   });
 };
@@ -65,10 +64,12 @@ const detailProduct = function (id) {
   console.log(chalk.yellow(`ID: `, product.id));
   console.log(`Sản phẩm: `, product.name);
   console.log(`Số lượng: `, product.amount);
+  console.log(`Đơn giá : `, product.price);
+  console.log(`Mô tả: `, product.amount);
   console.log("---------------------------");
 };
 // Update product
-const updateProduct = function (id, name, amount) {
+const updateProduct = function (id, name, amount, price, description) {
   const listProduct = getListProduct();
   const product = listProduct.find((item) => item.id === id);
   const idProduct = listProduct.findIndex((item) => {
@@ -107,9 +108,32 @@ const updateProduct = function (id, name, amount) {
     } else {
       amount = product.amount;
     }
+    if (price) {
+      console.log("---------------------------");
+      console.log(chalk.green(`Cập nhật đơn giá thành công!`));
+      console.log(`Đơn giá cũ: ${chalk.red(product.price)}`);
+      listProduct[idProduct].price = price;
+      updateList(listProduct);
+      console.log(`Đơn giá mới: ${chalk.green(price)}`);
+      console.log("---------------------------");
+    } else {
+      price = product.price;
+    }
+    if (description) {
+      console.log("---------------------------");
+      console.log(chalk.green(`Cập nhật mô tả thành công!`));
+      console.log(`Mô tả cũ: ${chalk.red(product.description)}`);
+      listProduct[idProduct].description = description;
+      updateList(listProduct);
+      console.log(`Mô tả mới: ${chalk.green(description)}`);
+      console.log("---------------------------");
+    } else {
+      description = product.description;
+    }
     console.log("---------------------------");
     console.log(
-      `ID: ${product.id} - Sản phẩm: ${product.name} - Số lượng: ${product.amount}`
+      `ID: ${product.id} - Sản phẩm: ${product.name} - Số lượng: ${product.amount} - Đơn giá ${product.price} - Mô tả: ${product.description}
+      `
     );
     console.log("---------------------------");
   } else {

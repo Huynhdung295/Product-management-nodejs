@@ -23,7 +23,7 @@ yargs.command({
     tasks.detailProduct(args.id);
   },
 });
-// Add product: node index.js add --id="" --name="" --amount=""
+// Add product: node index.js add --id="" --name="" --amount="" --price="" --description=""
 yargs.command({
   command: "add",
   builder: {
@@ -39,9 +39,17 @@ yargs.command({
       type: "number",
       demandOption: true,
     },
+    price: {
+        type: "number",
+        demandOption: true,
+    },
+    description: {
+        type: "string",
+        demandOption: false
+    }
   },
   handler: (args) => {
-    tasks.addProduct(args.id, args.name, args.amount);
+    tasks.addProduct(args.id, args.name, args.amount, args.price, args.description);
   },
 });
 // Remove product (by ID): node index.js remove --id=""
@@ -57,7 +65,7 @@ yargs.command({
     tasks.removeProduct(args.id);
   },
 });
-// Update product (by ID): node index.js update --id="" --name="" --amount=""
+// Update product (by ID): node index.js update --id="" --name="" --amount="" --price="" --description=""
 yargs.command({
   command: "update",
   builder: {
@@ -73,9 +81,17 @@ yargs.command({
       type: "number",
       demandOption: false,
     },
+    price: {
+        type: "number",
+        demandOption: false,
+    },
+    description: {
+        type: "string",
+        demandOption: false
+    }
   },
   handler: (args) => {
-    tasks.updateProduct(args.id, args.name, args.amount);
+    tasks.updateProduct(args.id, args.name, args.amount, args.price, args.description);
   },
 });
 //   Order product (by ID): node index.js order --id="" --orderx50="" (Order nhiều)
