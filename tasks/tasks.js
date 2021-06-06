@@ -65,7 +65,7 @@ const detailProduct = function (id) {
   console.log(`Sản phẩm: `, product.name);
   console.log(`Số lượng: `, product.amount);
   console.log(`Đơn giá : ${product.price} $`);
-  console.log(`Mô tả: `, product.amount);
+  console.log(`Mô tả: `, product.description);
   console.log("---------------------------");
 };
 // Update product
@@ -132,8 +132,7 @@ const updateProduct = function (id, name, amount, price, description) {
     }
     console.log("---------------------------");
     console.log(
-      `ID: ${product.id} - Sản phẩm: ${product.name} - Số lượng: ${product.amount} - Đơn giá ${product.price} $ - Mô tả: ${product.description}
-      `
+      `ID: ${product.id} - Sản phẩm: ${product.name} - Số lượng: ${product.amount} - Đơn giá ${product.price} $ - Mô tả: ${product.description} `
     );
     console.log("---------------------------");
   } else {
