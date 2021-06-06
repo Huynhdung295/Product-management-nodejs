@@ -64,7 +64,7 @@ const detailProduct = function (id) {
   console.log(chalk.yellow(`ID: `, product.id));
   console.log(`Sản phẩm: `, product.name);
   console.log(`Số lượng: `, product.amount);
-  console.log(`Đơn giá : `, product.price);
+  console.log(`Đơn giá : ${product.price} $`);
   console.log(`Mô tả: `, product.amount);
   console.log("---------------------------");
 };
@@ -111,10 +111,10 @@ const updateProduct = function (id, name, amount, price, description) {
     if (price) {
       console.log("---------------------------");
       console.log(chalk.green(`Cập nhật đơn giá thành công!`));
-      console.log(`Đơn giá cũ: ${chalk.red(product.price)}`);
+      console.log(`Đơn giá cũ: ${chalk.red(product.price)} $`);
       listProduct[idProduct].price = price;
       updateList(listProduct);
-      console.log(`Đơn giá mới: ${chalk.green(price)}`);
+      console.log(`Đơn giá mới: ${chalk.green(price)} $`);
       console.log("---------------------------");
     } else {
       price = product.price;
@@ -132,7 +132,7 @@ const updateProduct = function (id, name, amount, price, description) {
     }
     console.log("---------------------------");
     console.log(
-      `ID: ${product.id} - Sản phẩm: ${product.name} - Số lượng: ${product.amount} - Đơn giá ${product.price} - Mô tả: ${product.description}
+      `ID: ${product.id} - Sản phẩm: ${product.name} - Số lượng: ${product.amount} - Đơn giá ${product.price} $ - Mô tả: ${product.description}
       `
     );
     console.log("---------------------------");

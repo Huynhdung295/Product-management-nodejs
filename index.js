@@ -23,7 +23,7 @@ yargs.command({
     tasks.detailProduct(args.id);
   },
 });
-// Add product: node index.js add --id="" --name="" --amount="" --price="" --description=""
+// Add product: node index.js add --id="1" --name="Robot" --amount="30" --price="5000" --description="Đây là robot"
 yargs.command({
   command: "add",
   builder: {
